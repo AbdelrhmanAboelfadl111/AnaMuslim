@@ -1,0 +1,301 @@
+@use "../../globalStyles/mixin" as *;
+@use "../../globalStyles/colors" as *;
+
+.box {
+    width: 1000px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    &.show{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @include responsive(350){
+        width: 90%;
+    }
+    @include responsive(1050){
+        width: 90%;
+    }
+    @include responsive(1300){
+        width: 90%;
+    }
+    position: relative;
+    padding: 50px;
+    @include responsive(350) {
+        padding: 30px;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    .rewayaLogo,
+    .soraLogo{
+        width: 25px!important;
+    }
+    .boxShapeLight{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        background-image: url("/assets/imgs/pattern.svg");
+        opacity: 0.2;
+        img{
+            width: 170px;
+            position: absolute;
+            &:nth-of-type(1){
+                left: 0;
+            }
+            &:nth-of-type(2){
+                left: 0;
+                bottom: 0;
+                transform: rotate(-90deg);
+            }
+            &:nth-of-type(3){
+                right: 0;
+                transform: rotate(90deg);
+            }
+            &:nth-of-type(4){
+                right: 0;
+                bottom: 0;
+                transform: rotate(-180deg);
+            }
+        }
+    }
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--main-gradient);
+        border-radius: 20px;
+    }
+
+    form {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1;
+
+        .InputBox {
+            height: 40px;
+            position: relative;
+
+            .searchLogo {
+                width: 35px;
+            }
+
+            input:focus {
+                box-shadow: none;
+                border-color: transparent;
+                height: 100%;
+            }
+        }
+
+        // =========================
+        // Main Search List
+        // =========================
+
+
+        // =========================
+        // Main Content
+        // =========================
+
+        .mainContent {
+
+            .row {
+                gap: 10px;
+                flex-wrap: nowrap;
+                @include responsive(350){
+                    flex-wrap: wrap;
+                }
+                @include responsive(850){
+                    flex-wrap: nowrap;
+                }
+                .column {
+                    position: relative;
+                    padding: 0;
+                    @include responsive(350) {
+                        margin-bottom: 1rem;
+                    }
+                    @include responsive(1050) {
+                        margin-bottom: 0;
+                    }
+                    .InputBox {
+                        width: 100%;
+                        @include responsive(850) {
+                            width: 90%;
+                        }
+                    }
+
+                    .listOptions {
+                        position: absolute;
+                        top: 80%;
+                        @include responsive(350) {
+                            top: 125%;
+                        }
+                        left: 0;
+                        transition: all 0.3s ease-in-out;
+                        &.listOptions3{
+                            top: 125%;
+                        }
+                        width: 100%;
+                        height: auto;
+                        max-height: 240px;
+
+                        padding: 20px;
+                        gap: 20px;
+
+                        background-color: white;
+                        border-radius: 5px;
+
+                        box-shadow:
+                            0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+                        opacity: 0;
+                        pointer-events: none;
+
+                        z-index: 1000;
+
+                        span {
+                            position: relative;
+
+                            width: 80%;
+                            padding: 8px 5px;
+
+                            text-align: center;
+                            font-weight: 500;
+
+                            background-color: rgb(244, 244, 244);
+                            border-radius: 5px;
+
+                            box-shadow:
+                                0 1px 3px 0 rgba(0, 0, 0, 0.1),
+                                0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+                            font-size: 15px;
+
+                            cursor: pointer;
+
+                            transition: all 0.3s ease-in-out;
+
+                            &::before {
+                                content: "";
+
+                                position: absolute;
+                                inset: 0;
+
+                                width: 100%;
+                                height: 100%;
+
+                                background: var(--main-Active_gradient);
+
+                                border-radius: 5px;
+
+                                opacity: 0;
+                                z-index: -1;
+
+                                transition: opacity 0.4s;
+                            }
+
+                            &:hover {
+                                background-color: transparent;
+
+                                &::before {
+                                    opacity: 1;
+                                }
+                            }
+                            &.hide{
+                                display: none;
+                            }
+                            &.noData{
+                                background-color: transparent !important;
+                                &.noData::before {
+                                   
+                                    opacity: 1!important;
+                                }
+                            }
+                            &.active{
+                                background-color: transparent;
+                                &::before {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+         // =========================
+        // Button
+        // =========================
+        .btnSubmit{
+            background-color: transparent;
+            border: 0;
+            padding: 10px 40px;
+            position: relative;
+            background: var(--main-Active_gradient);
+            font-weight:300 ;
+            border-radius: 5px;
+            box-shadow:0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease-in-out;
+            &::before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0);
+                transition: all 0.3s ease-in-out;
+            }
+            &:hover::before{
+                background-color: rgba(0, 0, 0, 0.044);
+            }
+            &:hover{
+                transform: translateY(-2px);
+            }
+            &.noneComplete{
+                cursor: not-allowed;
+                background: rgb(186, 186, 186);
+                transform: scale(0.9);
+            }
+        }
+        .alert{
+            transition: all 0.3s;
+        }
+        .alertNoData{
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+    .soundBar{
+        width: 80%;
+        @include responsive(350) {
+            width: 100% !important;
+        }
+        @include responsive(1050) {
+            width: 80% !important;
+        }
+        background-color: red;
+        audio{
+            width: 100%;
+        }
+    }
+}
+
+.listOptions.show{
+    opacity: 1 !important;
+    z-index: 10000 !important;
+    pointer-events: all !important;
+}

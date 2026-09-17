@@ -1,0 +1,226 @@
+<div class="box" [class.show]="isShow()">
+
+    <div class="boxShapeLight">
+    </div>
+
+    <form>
+
+        <div class="mainContent">
+
+            <div class="row">
+
+                <!-- ================= RECITER ================= -->
+
+                <div class="col-md-4 column">
+
+                    <div class="InputBox input-group d-flex justify-content-center align-items-center flex-row-reverse">
+
+                        <span class="input-group-text h-100" id="basic-addon1">
+                            <img class="searchLogo" src="assets/imgs/resiter.png" alt="">
+                        </span>
+
+                        <input type="text" (click)="openList('reciter')" (change)="reset()"
+                            (input)="searchReciters($event)"
+                            class="form-control h-100 reciterName fontMain text-center d-flex justify-content-center align-items-center"
+                            placeholder="اسم القارئ" aria-label="اسم القارئ" aria-describedby="basic-addon1"
+                            [value]="selectedReciterName()" [attr.data-SelectedReciter-id]="selectedReciterId()"
+                            [attr.data-SelectedReciter-name]="selectedReciterName()">
+
+                    </div>
+
+                    @if(openedList() === "reciter") {
+
+                    <div
+                        class="listOptions show overflow-y-auto d-flex justify-content-start align-items-center flex-column">
+
+                        @if(!isUserSearchRecitersType()) {
+
+                        <span class="fontMain noData">
+                            ادخل اسم القارئ
+                        </span>
+
+                        } @else {
+
+                        @if(filteredReciters().length === 0) {
+
+                        <span class="fontMain noData">
+                            ادخل اسم قارئ صالح
+                        </span>
+
+                        } @else {
+
+                        @for(reciter of filteredReciters(); track reciter.id) {
+
+                        <span class="fontMain" [class.active]="reciter.id == selectedReciterId()"
+                            (click)="selectedReciter(reciter)">
+                            {{reciter.name}}
+                        </span>
+
+                        }
+
+                        }
+
+                        }
+
+                    </div>
+
+                    }
+
+                </div>
+
+
+                <!-- ================= REWAYA ================= -->
+
+                <div class="col-md-4 column">
+
+                    <div class="InputBox input-group d-flex justify-content-center align-items-center flex-row-reverse">
+
+                        <span class="input-group-text h-100" id="basic-addon1">
+                            <img class="searchLogo rewayaLogo" src="assets/imgs/rewaya.png" alt="">
+                        </span>
+
+                        <input type="text" (click)="openList('rewaya')" (input)="searchRewaya($event)"
+                            value="{{selectedRewayaValue()}}"
+                            class="form-control h-100 reciterName fontMain text-center d-flex justify-content-center align-items-center"
+                            placeholder="اختر الروايه" aria-label="اختر الروايه" aria-describedby="basic-addon1"
+                            name="rewaya">
+
+                    </div>
+
+
+                    @if(openedList() === "rewaya") {
+
+                    @if(selectedReciterId() === "") {
+
+                    <div
+                        class="listOptions show overflow-y-auto d-flex justify-content-start align-items-center flex-column">
+
+                        <span class="fontMain noData">
+                            ادخل اسم القارئ
+                        </span>
+
+                    </div>
+
+                    } @else {
+
+                    <div
+                        class="listOptions show overflow-y-auto d-flex justify-content-start align-items-center flex-column">
+
+                        @if(filteredRewaya().length === 0) {
+
+                        <span class="fontMain noData">
+                            ادخل اسم رواية صالحة
+                        </span>
+
+                        } @else {
+
+                        @for(rewaya of filteredRewaya(); track rewaya.id) {
+
+                        <span class="fontMain" [class.active]="rewaya.rewaya_id == selectedRewayaId()"
+                            (click)="selectedRewaya(rewaya)">
+                            {{rewaya.name}}
+                        </span>
+
+                        }
+
+                        }
+
+                    </div>
+
+                    }
+
+                    }
+
+                </div>
+
+
+                <!-- ================= SORA ================= -->
+
+                <div class="col-md-4 column mb-4">
+
+                    <div class="InputBox input-group d-flex justify-content-center align-items-center flex-row-reverse">
+
+                        <span class="input-group-text h-100" id="basic-addon1">
+                            <img class="searchLogo soraLogo" src="assets/imgs/sora.png" alt="">
+                        </span>
+
+                        <input type="text" (click)="openList('sora')" (input)="searchSora($event)"
+                            class="form-control h-100 reciterName fontMain text-center d-flex justify-content-center align-items-center"
+                            placeholder="اختر السورة" aria-label="اختر السورة" aria-describedby="basic-addon1"
+                            name="sora" value="{{selectedSoraValue()}}">
+
+                    </div>
+
+
+                    @if(openedList() === "sora") {
+
+                    @if(selectedRewayaId() === "") {
+
+                    <div
+                        class="listOptions listOptions3 show overflow-y-auto d-flex justify-content-start align-items-center flex-column">
+
+                        <span class="fontMain noData">
+                            اختر الرواية
+                        </span>
+
+                    </div>
+
+                    } @else {
+
+                    <div
+                        class="listOptions listOptions3 show overflow-y-auto d-flex justify-content-start align-items-center flex-column">
+
+                        @if(filteredSora().length === 0) {
+
+                        <span class="fontMain noData">
+                            ادخل اسم سورة صالحة
+                        </span>
+
+                        } @else {
+
+                        @for(sora of filteredSora(); track sora.id) {
+
+                        <span class="fontMain" [class.active]="selectedSoraValue() == sora.name"
+                            (click)="selectedSora(sora)">
+                            {{sora.name}}
+                        </span>
+
+                        }
+
+                        }
+
+                    </div>
+
+                    }
+
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BUTTON ================= -->
+
+            <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
+                <button class="btnSubmit mainFont mb-3" [class.noneComplete]="!isDataCompleted()" (click)="getServer()"
+                    type="button">استماع</button>
+                <div class="alert alert-danger fontMain" [class.alertNoData]="isDataCompleted()">يرجى ملئ جميع البيانات</div>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <!-- ================= AUDIO ================= -->
+
+    <div class="soundBar d-flex justify-content-center align-items-center">
+
+        <audio controls [src]="server()">
+            المتصفح لا يدعم تشغيل الصوت.
+        </audio>
+
+    </div>
+
+</div>

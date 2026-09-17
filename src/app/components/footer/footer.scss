@@ -1,0 +1,23 @@
+@use "../../globalStyles/mixin" as *;
+@use "../../globalStyles/colors" as *;
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 13.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--third-gradient);
+    .item{
+        background: var(--main-Active_gradient);
+        padding: 10px;
+        border-radius: 10px;
+        h4{
+            font-size: 19px;
+            transform: translateY(5px);
+            
+        }
+    }
+}

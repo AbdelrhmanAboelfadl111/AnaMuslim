@@ -1,0 +1,16 @@
+@use "../../globalStyles/mixin" as *;
+@use "../../globalStyles/colors" as *;
+
+header{
+    height: 100dvh;
+    background-color: var(--main-body_navBar);
+    display: flex;
+    transition: all 0.4s ease-in-out;
+    
+    main{
+        width: 100%;
+        height: 80%;
+        position: relative;
+       
+    }
+}

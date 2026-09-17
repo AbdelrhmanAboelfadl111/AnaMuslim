@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../src/app/globalStyles/fonts" as *;
+@use "../src/app/globalStyles/mixin" as *;
+@use "../src/app/globalStyles/colors" as *;
+

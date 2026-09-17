@@ -1,0 +1,56 @@
+@use "../../globalStyles/mixin" as *;
+@use "../../globalStyles/colors" as *;
+.row{
+    gap: 30px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    @include responsive(350) {
+        flex-wrap: wrap !important;
+    }
+    @include responsive(850) {
+        flex-wrap: nowrap !important;
+    }
+    .column{
+        @include flexCenter();
+        transition: all 0.3s;
+        opacity: 0;
+        transform: translateY(10px);
+        &.show {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        &.column2 {
+            transition-delay: 0.5s;
+        }
+        .box{
+            @include flexCenter();
+            width: 350px;
+            height: 250px;
+            flex-direction: column;
+            background: var(--main-gradient);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            @include responsive(350){
+                width: 300px;
+            }
+            
+            
+            &:hover{
+                transform: translateY(-5px);
+                box-shadow: 0 0 20px 3px #ffcc673d;
+            }
+            .imgCon{
+                img{
+                    width: 100px;
+                }
+            }
+
+            .title{
+
+            }
+        }
+    }
+}
