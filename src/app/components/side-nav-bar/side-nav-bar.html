@@ -5,20 +5,20 @@
                 <img src="assets/imgs/logo.png" alt="anaMuslim">
             </a>
         </div>
-    
+
         <div class="main w-100 h-100 d-flex justify-content-between align-items-center flex-column">
             <div class="item w-100 h-100 d-flex justify-content-center align-items-center">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto  mb-2 mb-lg-0">
                         <li class="nav-item" routerLink="/quran" routerLinkActive="active">
-                                <img src="/assets/imgs/quran.png" alt="">
-                                <a class="nav-link mainFont itemHide">استماع القران الكريم</a>
+                            <img src="/assets/imgs/quran.png" alt="">
+                            <a class="nav-link mainFont itemHide">استماع القران الكريم</a>
                         </li>
-                        <li class="nav-item" routerLink="/azkar"  [class.active]="isActive()">
+                        <li class="nav-item" routerLink="/azkar" [class.active]="isAzkarActive()">
                             <img src="/assets/imgs/azkar.png" alt="">
                             <a class="nav-link mainFont itemHide">أذكار</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" routerLink="/liveMenu" [class.active]="isLiveActive()">
                             <img src="/assets/imgs/live.png" alt="">
                             <a class="nav-link mainFont itemHide">البث المباشر</a>
                         </li>
@@ -31,7 +31,7 @@
             </div>
             <div class="footer w-100">
                 <div class="item" (click)="hideSideNav()">
-                    
+
                     <h6 class="mainFont m-0">أظهار اقل</h6>
                     <img src="/assets/imgs/arrow.svg" alt="">
                 </div>

@@ -29,9 +29,12 @@ export class SideNavBar {
     }
   );
 
-  public isActive = computed(() =>
+  public isAzkarActive = computed(() =>
     this.currentUrl() === '/azkar' ||
-    this.currentUrl() === '/azkarMorning'
+    this.currentUrl() === '/azkarMorning'||
+    this.currentUrl() === '/azkarEvening'
   );
+
+  public isLiveActive = computed(() => this.currentUrl() === '/liveMenu');
 
 }

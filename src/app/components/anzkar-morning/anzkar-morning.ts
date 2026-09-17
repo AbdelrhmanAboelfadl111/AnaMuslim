@@ -12,8 +12,13 @@ export class AnzkarMorning {
   public azkar = inject(GetAzkar);
 
   public azkarType = signal<string>('morning');
+
   public azkarData = signal<any[]>([]);
+
   public isLoading = signal<boolean>(true);
+
+  public isDark = signal<boolean>(false);
+  
 
   public getAzkar() {
 
@@ -56,6 +61,29 @@ export class AnzkarMorning {
 
   ngOnInit() {
     this.getAzkar();
+  }
+  ngAfterViewInit(): void {
+
+        let element = document.querySelector('html');
+
+        if (element) {
+
+            let observer = new MutationObserver(() => {
+
+              if (element.classList.contains('dark-mode')) {
+                this.isDark.set(true) ;
+                } else {
+                this.isDark.set(false) ;
+                }
+
+            });
+
+            observer.observe(element, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+
+        }
   }
 
 }

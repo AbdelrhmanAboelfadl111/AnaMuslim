@@ -1,0 +1,43 @@
+<div class="box" [class.loading]="isLoading()">
+    <div class="boxShapeLight">
+    </div>
+    <div class="row" [class.loading]="isLoading()">
+        @if(isLoading()){
+        <div class="spinner">
+            <div></div>
+            <div></div>
+        </div>
+        }@else {
+        @if(azkarData()){
+        @for(zekr of azkarData();track zekr){
+        <div class="col-md-12 column" [class.disabled]="zekr.count == 0" [class.dark]="isDark()">
+            <div class="main">
+                <h4 class="fontMain">
+                    {{zekr.name}}
+                </h4>
+            </div>
+            <div class="footer">
+                <h6 class="fontMain">
+                    @if(zekr.type =="morning"){
+                    صباحي
+                    }@else if(zekr.type =="evening"){
+                    مسائي
+                    }
+                </h6>
+                <div class="btnContainer d-flex">
+                    <button [disabled]="zekr.count != 0" class="fontMain ms-3 position-relative"
+                        (click)="undoCount(zekr)">↺</button>
+                    <button [disabled]="zekr.count == 0" class="fontMain" (click)="decreaseCount(zekr)">{{ zekr.count
+                        }}</button>
+                </div>
+            </div>
+
+        </div>
+        }
+        }
+        }
+
+
+
+    </div>
+</div>
