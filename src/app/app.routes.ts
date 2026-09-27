@@ -15,5 +15,12 @@ export const routes: Routes = [
     },
     {
         path: 'azkarMorning', loadComponent: () => import('../app/components/anzkar-morning/anzkar-morning').then(m => m.AnzkarMorning)
+    },
+    {
+        path: 'azkarEvening', loadComponent: () => import('../app/components/anzkar-evining/anzkar-evining').then(m => m.AnzkarEvining)
+    }
+    ,
+    {
+        path: 'liveMenu', loadComponent: () => import('../app/components/live-menu/live-menu').then(m => m.LiveMenu)
     }
 ];
